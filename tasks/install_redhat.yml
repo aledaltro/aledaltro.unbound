@@ -1,0 +1,32 @@
+---
+# Tasks to install unbound recursive dns
+- name: Checking if Unbound is present on managed node.
+  yum:
+    name: unbound
+    state: latest
+
+- name: Start and enable Unbound service.
+  service:
+    name: unbound
+    state: started
+    enabled: true
+
+- name: Checking if Firewalld is present on managed node.
+  yum:
+    name: firewalld
+    state: latest
+
+- name: Start and enable firewalld service.
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+
+- name: Set firewall rules to allow DNS Traffic
+  firewalld:
+    port: 53/udp
+    state: enabled
+    immediate: true
+    permanent: true
+
+

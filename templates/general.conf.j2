@@ -1,0 +1,23 @@
+server:
+port: 53
+verbosity: 0
+num-threads: {{ ansible_processor_vcpus }}
+interface: 0.0.0.0
+{% for i in unbound_access_control %}
+access-control: {{i.address}} {{i.state}}
+{% endfor %}
+username: unbound
+directory: "/etc/unbound"
+logfile: "/var/log/unbound.log"
+use-syslog: no
+hide-version: yes
+so-rcvbuf: 4m
+so-sndbuf: 4m
+do-ip4: yes
+do-ip6: no
+do-udp: yes
+do-tcp: no
+remote-control:
+control-enable: {{ unbound_control_enable }}
+control-port: {{ unbound_control_port }}
+control-interface: {{ unbound_control_interface }}

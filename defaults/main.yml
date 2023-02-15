@@ -1,0 +1,15 @@
+---
+unbound_forward_zone:
+  - domain: .
+    fwd_addr: 
+      - '8.8.8.8'
+      - '4.2.2.2'
+unbound_access_control:
+  - address: '0.0.0.0/0'
+    state: 'allow'
+unbound_control_enable: 'no'
+unbound_control_port: '957'
+unbound_control_interface: 0.0.0.0
+unbound_trusted_domains:
+  - domain: internal
+

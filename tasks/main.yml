@@ -1,0 +1,10 @@
+---
+# tasks file for bhaldur.unbound
+- name: Install Unbound
+  include_tasks: install_ubuntu.yml
+  when: ansible_facts['distribution'] == 'Ubuntu'
+
+- name: Configure Unbound
+  include_tasks: configure.yml
+  when: ansible_facts['distribution'] == 'Ubuntu'
+

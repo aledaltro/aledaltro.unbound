@@ -1,0 +1,9 @@
+server:
+
+unblock-lan-zones: yes
+insecure-lan-zones: yes
+
+{% for i in unbound_trusted_domains %}
+private-domain: "{{ i.domain }}"
+domain-insecure: "{{ i.domain }}"
+{% endfor %}
