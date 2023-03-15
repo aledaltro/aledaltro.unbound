@@ -1,0 +1,7 @@
+{% for i in unbound_forward_zone %}
+forward-zone:
+  name: "{{ i.domain }}"
+{% for x in i.fwd_addr %}
+  forward-addr: {{ x }}
+{% endfor %}
+{% endfor %}
